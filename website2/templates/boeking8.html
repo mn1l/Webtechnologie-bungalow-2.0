@@ -1,11 +1,6 @@
-<!DOCTYPE html>
-<html lang="en">
-
-<head>
-	<meta charset="utf-8">
-	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+{% extends "base.html" %}
+{% block title %}Bungalow{% endblock %}
+{% block content %}
 
 	<title>Acht persoons bungalow</title>
 
@@ -52,49 +47,7 @@
             </div>
         </div>
     </div>
-	<header>
-		<!-- Header Start -->
-	   <div class="header-area header-sticky">
-			<div class="main-header ">
-				<div class="container">
-					<div class="row align-items-center">
-						<!-- logo -->
-						<div class="col-xl-2 col-lg-2">
-							<div class="logo">
-							   <a href="/"><img src="../static/assets/img/logo/logo.png" alt=""></a>
-							</div>
-						</div>
-					<div class="col-xl-8 col-lg-8">
-							<!-- main-menu -->
-							<div class="main-menu f-right d-none d-lg-block">
-								<nav>
-									<ul id="navigation">                                                                                                                                     
-										<li><a href="/">Home</a></li>
-										<li><a href="/rooms">Bungalows</a></li>
-										<li><a href="/ #contact">Contact</a></li>
-										<li><a href="/login">Login</a></li>
-										<li><a href="/register">Registreren</a></li>
-									</ul>
-								</nav>
-							</div>
-						</div>             
-						<div class="col-xl-2 col-lg-2">
-							<!-- header-btn -->
-							<div class="header-btn">
-								<a href="/rooms" class="btn btn1 d-none d-lg-block ">Boek Online</a>
-							</div>
-						</div>
-						<!-- Mobile Menu -->
-						<div class="col-12">
-							<div class="mobile_menu d-block d-lg-none"></div>
-						</div>
-					</div>
-				</div>
-			</div>
-	   </div>
-		<!-- Header End -->
-	</header>
-
+	
 <body>
 	<div id="booking" class="section">
 		<div class="section-center">
@@ -171,5 +124,5 @@
         <script src="../static/assets/js/plugins.js"></script>
         <script src="../static/assets/js/main.js"></script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
-
+{% endblock %}
 </html>
