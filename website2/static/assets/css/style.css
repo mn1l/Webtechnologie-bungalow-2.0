@@ -1786,15 +1786,19 @@ label {
 
 @media only screen and (min-width: 768px) and (max-width: 991px) {
   .header-area {
+    
     padding: 18px 0; } }
 
 @media only screen and (min-width: 576px) and (max-width: 767px) {
   .header-area {
+    
     padding: 18px 0; } }
 
 @media (max-width: 767px) {
   .header-area {
     padding: 18px 0; } }
+
+
 
 .main-header {
   position: relative;
