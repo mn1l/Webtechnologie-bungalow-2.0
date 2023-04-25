@@ -202,7 +202,7 @@ body {
 
 .container {
   width: 900px;
-  background: #fff;
+  ;
   margin: 0 auto;
   box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
   -moz-box-shadow: 0px 15px 16.83px 0.17px rgba(0, 0, 0, 0.05);
@@ -274,7 +274,7 @@ figure {
 
 .form-submit {
   display: inline-block;
-  background: #6dabe4;
+  background: #dca73a;
   color: #fff;
   border-bottom: none;
   width: auto;
@@ -287,7 +287,7 @@ figure {
   margin-top: 25px;
   cursor: pointer; }
   .form-submit:hover {
-    background: #4292dc; }
+    background: #ecb549; }
 
 #signin {
   margin-top: 16px; }
@@ -475,7 +475,7 @@ label.valid {
     .socials li a i {
       width: 30px;
       height: 30px;
-      color: #fff;
+      color: pink;
       font-size: 14px;
       border-radius: 5px;
       -moz-border-radius: 5px;

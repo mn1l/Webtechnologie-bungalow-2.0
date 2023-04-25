@@ -130,4 +130,6 @@ def boeking6():
 def boeking8():
      return render_template('boeking8.html')
 
-
+@auth.route('/mijnboekingen')
+def mijnboekingen():
+     return render_template('mijnboekingen.html', bungalowtype = "bungalow nr. 2 voorbeeld", aantal_personen = "5 personen", betaald = "400" )
