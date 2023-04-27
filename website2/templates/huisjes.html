@@ -61,13 +61,13 @@
 				<div class="container">
 					<div class="row">
 						<div class="booking-form">
-							<div class="booking-bg">
+							<div class="booking-bg booking-bg-{{bungalow.id}}">
 								<div class="form-header">
 									<h2>Boek een bungalow</h2>
-									<p>Deze vrijstaande bungalow is geschikt voor maximaal 4 personen. Boek het nu voor maar €200 per week!</p>
+									<p>Deze vrijstaande bungalow is geschikt voor maximaal {{bungalow.size}} personen. Boek het nu voor maar €{{bungalow.price}}per week!</p>
 								</div>
 							</div>
-							<form>
+							<form method="POST">
 								<div class="row">
 									<div class="col-md-6">
 										<div class="form-group">
@@ -77,8 +77,8 @@
 												  id="week"
 												  type="week"
 												  name="week"
-												  min="2023-W14"
-												  max="2024-W52"
+												  min="2023-W17"
+												  max="2024-W1"
 												  required />
 												<span class="validity"></span>
 												

@@ -1,5 +1,5 @@
 from flask import Blueprint, render_template, request, flash, redirect, url_for
-from .models import Klant
+from .models import Klant, Bungalow, Boekingen
 from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
@@ -73,11 +73,11 @@ def index():
 def login():
     if request.method == 'POST':
         email = request.form.get('email')
-        password = request.form.get('password')
+        password = request.form.get('pw')
 
-        user = Klant.query.filter_by(email=email).first()
+        user = db.session.execute(db.select(Klant).filter_by(email=email)).scalar_one()
         if user:
-            if check_password_hash(user.password, password):
+            if check_password_hash(user.pw, password):
                 flash('Logged in successfully!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
@@ -108,7 +108,7 @@ def register():
             new_klant = Klant(email=email, name=name, pw=generate_password_hash(pw1, method='sha256'))
             db.session.add(new_klant)                    # Voeg toe
             db.session.commit()                          # Commit
-            login_user(klant, remember=True)
+            login_user(new_klant, remember=True)
             flash('Account created!', category='success')
             return redirect(url_for('index.html'))
         
@@ -118,17 +118,19 @@ def register():
 def rooms():
      return render_template('rooms.html')
 
-@auth.route('/boeking4')
-def boeking4():
-     return render_template('boeking4.html')
+@auth.route('/bungalow/<int:bungalow_id>', methods=["GET", "POST"])
+def bungalow(bungalow_id):
+    bungalow = db.get_or_404(Bungalow, bungalow_id)
 
-@auth.route('/boeking6')
-def boeking6():
-     return render_template('boeking6.html')
+    if request.method == 'POST':
+        week = request.form.get('week')
+        new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
+        db.session.add(new_boeking)                   
+        db.session.commit()
+        flash('Boeking created!', category='success')
 
-@auth.route('/boeking8')
-def boeking8():
-     return render_template('boeking8.html')
+    #print(list(db.session.execute(db.select(Bungalow)).scalars()))
+    return render_template('huisjes.html', bungalow = bungalow)
 
 @auth.route('/mijnboekingen')
 def mijnboekingen():

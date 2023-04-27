@@ -34,7 +34,6 @@
 	top: -25px;
 	bottom: -25px;
 	width: 400px;
-	background-image: url('../img/background.jpg');
 	background-size: cover;
 	background-position: center;
 	padding: 25px;
@@ -43,6 +42,10 @@
 	box-shadow: 0px 5px 10px -5px rgba(0, 0, 0, 0.1);
 	overflow: hidden;
 }
+
+.booking-form .booking-bg-1 { background-image: url('../img/background4.jpg'); }
+.booking-form .booking-bg-2 { background-image: url('../img/background6.jpg'); }
+.booking-form .booking-bg-3 { background-image: url('../img/background8.jpg'); }
 
 .booking-form .booking-bg::before {
 	content: '';

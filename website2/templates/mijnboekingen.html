@@ -52,6 +52,7 @@
         </div>
         <!-- slider Area End-->
 
+
         <!-- Room Start -->
         <section class="room-area r-padding1">
             <div class="container">
@@ -72,9 +73,11 @@
                         <div class="col-md-3">
                             <img src="assets/img/elements/d.jpg" alt="" class="img-fluid">
                         </div>
-                        
-                        <p class="text-right">Right aligned text on all viewport sizes.</p>
-    
+                        <ul class="text-right">
+                        {% for boeking in boekingen %}
+                            <li>{{ boeking.week }} aantal personen {{ boeking.bungalow.size }}</li>
+                        {% endfor %}
+                        </ul>
         
                     </div>
                 </div>
