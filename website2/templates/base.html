@@ -37,6 +37,9 @@
                                     <li><a href="/login">Login</a></li>
                                     <li><a href="/register">Registreren</a></li>
                                     {% endif %}
+                                    {% if current_user.is_authenticated %}
+                                    <li><a href="/boekingen">Mijn boekingen</a></li>
+                                    {% endif %}
                                 </ul>
                             </nav>
                         </div>

@@ -132,6 +132,4 @@ def bungalow(bungalow_id):
     #print(list(db.session.execute(db.select(Bungalow)).scalars()))
     return render_template('huisjes.html', bungalow = bungalow)
 
-@auth.route('/mijnboekingen')
-def mijnboekingen():
-     return render_template('mijnboekingen.html', bungalowtype = "bungalow nr. 2 voorbeeld", aantal_personen = "5 personen", betaald = "400" )
+
