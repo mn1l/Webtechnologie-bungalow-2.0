@@ -110,7 +110,7 @@ def register():
             db.session.commit()                          # Commit
             login_user(new_klant, remember=True)
             flash('Account created!', category='success')
-            return redirect(url_for('index.html'))
+            return redirect(url_for('views.home'))
         
     return render_template("register.html", klant=current_user)
 
