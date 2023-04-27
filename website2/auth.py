@@ -138,4 +138,13 @@ def bungalow(bungalow_id):
     #print(list(db.session.execute(db.select(Bungalow)).scalars()))
     return render_template('huisjes.html', bungalow = bungalow)
 
+@auth.route('/boekingen')
+def boekingen():
+
+    results = db.session.execute(db.select(Boekingen, Bungalow)
+                                 .filter(Boekingen.bungalow_id == Bungalow.id)
+                                 .filter(Boekingen.customer_id == current_user.id)).scalars()
+    return render_template("mijnboekingen.html", user=current_user, boekingen=results)
+
+
 
