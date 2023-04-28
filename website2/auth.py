@@ -139,6 +139,7 @@ def bungalow(bungalow_id):
     return render_template('huisjes.html', bungalow = bungalow)
 
 @auth.route('/boekingen')
+@login_required
 def boekingen():
 
     results = db.session.execute(db.select(Boekingen, Bungalow)
