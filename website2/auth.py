@@ -115,7 +115,7 @@ def register():
             db.session.add(new_klant)                    # Voeg toe
             db.session.commit()                          # Commit
             login_user(new_klant, remember=True)
-            flash('Account created!', category='success')
+            flash('Account aangemaakt!', category='success')
             return redirect(url_for('views.home'))
         
     return render_template("register.html", klant=current_user)
