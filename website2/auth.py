@@ -78,11 +78,11 @@ def login():
         user = db.session.execute(db.select(Klant).filter_by(email=email)).scalar_one()
         if user:
             if check_password_hash(user.pw, password):
-                flash('Logged in successfully!', category='success')
+                flash('Succesvol ingelogd!', category='success')
                 login_user(user, remember=True)
                 return redirect(url_for('views.home'))
             else:
-                flash('Incorrect password, try again', category='error')
+                flash('Incorrect wachtwoord, try again', category='error')
         else:
             flash('Email does not exist.', category='error')   
 

@@ -32,10 +32,22 @@
     <!-- Preloader Start -->
 
     <main>
-
         <!-- slider Area Start-->
         <div class="slider-area ">
+            {% with messages = get_flashed_messages() %}
+            {% if messages and current_user.is_authenticated %}
+            <div class="alert alert-success alert-dismissible fade show" role="alert" data-mdb-color="success">
+            {% for message in messages %}
+            <i class= "fas fa-check-circle me-3"> {{ message }} </i>
+            {% endfor %}
+                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                  </button>
+                </div>
+            {% endif %}
+            {% endwith %}
             <!-- Mobile Menu -->
+
             <div class="slider-active dot-style">
                 <div class="single-slider  hero-overly slider-height d-flex align-items-center" data-background="../static/assets/img/hero/h1_hero.jpg" >
                     <div class="container">
