@@ -130,6 +130,11 @@ def bungalow(bungalow_id):
 
     if request.method == 'POST':
         week = request.form.get('week')
+
+        #boeking = Boekingen.query.filter_by(week='week')
+        #if boeking:
+        #    flash('Datum is niet beschikbaar', category='error')
+        #else:
         new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
         db.session.add(new_boeking)                   
         db.session.commit()
