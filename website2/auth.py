@@ -133,7 +133,7 @@ def bungalow(bungalow_id):
         new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
         db.session.add(new_boeking)                   
         db.session.commit()
-        flash('Boeking created!', category='success')
+        flash('Boeking succesvol!', category='success')
         return redirect(url_for('views.home'))
 
     #print(list(db.session.execute(db.select(Bungalow)).scalars()))
