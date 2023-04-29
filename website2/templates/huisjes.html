@@ -42,6 +42,18 @@
 </head>
 
 <body>
+	{% with messages = get_flashed_messages() %}
+		{% if messages %}
+		<div class="alert alert-success alert-dismissible fade show" role="alert">
+		{% for message in messages %}
+		<li>  {{ message }} </li>
+		{% endfor %}
+			<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+				<span aria-hidden="true">&times;</span>
+				</button>
+			</div>
+		{% endif %}
+		{% endwith %}
 
 	<div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -53,7 +65,7 @@
             </div>
         </div>
     </div>
-
+	
 	
 	<main>
 		<div id="booking" class="section">
@@ -109,7 +121,18 @@
 									</div>
 								</div>
 								<div class="form-btn">
+									{% if current_user.is_authenticated %}
 									<button class="submit-btn">Boeking Bevestigen</button>
+									{% endif %}
+									{% if not current_user.is_authenticated %}
+									<button type= "button" class="submit-btn" id="warning" >Boeking Bevestigen</button>
+									<div class="alert alert-success alert-dismissible fade show" role="alert" data-mdb-color="success">
+										<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+											<span aria-hidden="true">&times;</span>
+											</button>
+									</div>
+									{% endif %}
+									
 								</div>
 							</form>
 						</div>
