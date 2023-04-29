@@ -43,6 +43,18 @@
 </div>
 
 <body>
+    {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
 
     <div class="main">
         <!-- Sing in  Form -->
@@ -65,18 +77,6 @@
                                 <label for="your_pass"><i class="zmdi zmdi-lock"></i></label>
                                 <input type="password" name="pw" id="your_pass" placeholder="Wachtwoord" required/>
                             </div>
-                            {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {% for message in messages %}
-                                <li>{{ message }}</li>
-                            {% endfor %}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
                             <div class="form-group form-button">
                                 <input type="submit" name="signin" id="signin" class="form-submit" value="Log in"/>
                             </div>
