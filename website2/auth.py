@@ -134,6 +134,7 @@ def bungalow(bungalow_id):
         db.session.add(new_boeking)                   
         db.session.commit()
         flash('Boeking created!', category='success')
+        return redirect(url_for('views.home'))
 
     #print(list(db.session.execute(db.select(Bungalow)).scalars()))
     return render_template('huisjes.html', bungalow = bungalow)

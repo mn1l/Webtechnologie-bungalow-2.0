@@ -42,6 +42,19 @@
 </head>
 
 <body>
+    {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                  </button>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
+
 	<div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
             <div class="preloader-inner position-relative">
