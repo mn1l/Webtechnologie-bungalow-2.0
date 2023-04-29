@@ -67,42 +67,58 @@
                         </div>
                     </div>
                 </div>
-                <div class="card mb-3" style="max-width: 540px;">
+                {% for boeking in boekingen %}
+                <div class="card mb-3" style="max-width: full-screen;">
                     <div class="row no-gutters">
                       <div class="col-md-4">
-                        <img src="..." class="card-img" alt="...">
+                        {% if boeking.bungalow.id == 1 %}
+                        <img src="../static/boekingcss/img/background4.jpg" class="float" alt="image4">
+                        {% elif boeking.bungalow.id == 2 %}
+                        <img src="../static/boekingcss/img/background6.jpg" class="float" alt="image4">
+                        {% elif boeking.bungalow.id == 3 %}
+                        <img src="../static/boekingcss/img/background8.jpg" class="float" alt="image4">
+                        {% endif %}
                       </div>
                       <div class="col-md-8">
                         <div class="card-body">
-                          <h5 class="card-title">Card title</h5>
-                          <p class="card-text"> sas.</p> <p class="card-text" > .</p>
-                          <p class="card-text"> ss.</p>
-                          <p class="card-text"> asacasc.</p>
-                          <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                            <div class="container">
+
+                                <h4 class="title"><b>Boeking Nr.{{ boeking.id }}</b><br></h4>
+                                <div class="mb-3 row">          
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Week</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ boeking.week }}">
+                                    </div>
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Type</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="{{ boeking.bungalow.size }} persoons bungalow">
+                                    </div>
+                                    <label for="staticEmail" class="col-sm-2 col-form-label">Betaald</label>
+                                    <div class="col-sm-10">
+                                      <input type="text" readonly class="form-control-plaintext" id="staticEmail" value="€{{ boeking.bungalow.price }}">
+                                    </div>
+                                </div>
+
+                                <div class="row">
+                                    <div class="vr"></div>
+                                    <div class="col-4">
+                                        <button type="button" class="submit-btn">Cancel</button>
+
+                                    </div>
+                                    <div class="form-btn">
+                                        <button type="button" class="submit-btn">Save changes</button>
+                                    
+                                    </div>
+                                    <!--<div class="form-btn">
+                                        <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                    </div>-->
+                                </div>
+                            </div>
                         </div>
                       </div>
                     </div>
                   </div>
-                <div class="section-top-border">
-                    <h3 class="mb-30">Left Aligned</h3>
-                    <div class="row">
-                        <div class="col-md-3">
-                            <img src="assets/img/elements/d.jpg" alt="" class="img-fluid">
-                        </div>
-                        <ul class="text-right">
-                        {% for boeking in boekingen %}
-                            <li>week nummer {{ boeking.week }} 
-                                max aantal personen {{ boeking.bungalow.size }}
-                                prijs €{{ boeking.bungalow.price }}
-
-                            </li>
-                        {% endfor %}
-                        </ul>
-        
-                    </div>
-                </div>
-                
-
+                  {% endfor %}
         </section>
         <!-- Room End -->
    
