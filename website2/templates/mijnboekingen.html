@@ -75,7 +75,11 @@
                         </div>
                         <ul class="text-right">
                         {% for boeking in boekingen %}
-                            <li>{{ boeking.week }} aantal personen {{ boeking.bungalow.size }}</li>
+                            <li>week nummer {{ boeking.week }} 
+                                max aantal personen {{ boeking.bungalow.size }}
+                                prijs {{ boeking.bungalow.price }}
+
+                            </li>
                         {% endfor %}
                         </ul>
         

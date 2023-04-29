@@ -120,8 +120,8 @@ def register():
         
     return render_template("register.html", klant=current_user)
 
-@auth.route('/rooms')
-def rooms():
+@auth.route('/bungalows')
+def bungalows():
      return render_template('rooms.html')
 
 @auth.route('/bungalow/<int:bungalow_id>', methods=["GET", "POST"])

@@ -102,20 +102,34 @@
 									<div class="col-md-6">
 										<div class="form-group">
 											<span class="form-label">Aantal Personen</span>
+											{% if bungalow.size == 4 %}
 											<select class="form-control">
 												<option>1</option>
 												<option>2</option>
 												<option>3</option>
 												<option>4</option>
-												{% if bungalow.size == 6 or 8 %}
+											</select>
+											{% elif bungalow.size == 6 %}
+											<select class="form-control">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
 												<option>5</option>
 												<option>6</option>
-												{% endif %}
-												{% if bungalow.size == 8 %}
+											</select>
+											{% else %}
+											<select class="form-control">
+												<option>1</option>
+												<option>2</option>
+												<option>3</option>
+												<option>4</option>
+												<option>5</option>
+												<option>6</option>
 												<option>7</option>
 												<option>8</option>
-												{% endif %}
 											</select>
+											{% endif %}
 											<span class="select-arrow"></span>
 										</div>
 									</div>
