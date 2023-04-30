@@ -43,21 +43,9 @@
 </div>
 
 <body>
-    {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert" data-mdb-color="danger">
-                            {% for message in messages %}
-                            <i class= "fas fa-times-circle me-3" > {{ message }} </i>
-                            {% endfor %}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
+
 
     <div class="main">
-
         <!-- Sign up form -->
         <section class="signup">
             <div class="container2">
@@ -81,6 +69,18 @@
                                 <label for="re-pass"><i class="zmdi zmdi-lock-outline"></i></label>
                                 <input type="password" name="password2" id="pw2" placeholder="Herhaal Uw Wachtwoord" required/>
                             </div>
+                            {% with messages = get_flashed_messages() %}
+                            {% if messages %}
+                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
+                            {% for message in messages %}
+                                <li>{{ message }}</li>
+                            {% endfor %}
+                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                                    <span aria-hidden="true">&times;</span>
+                                    </button>
+                                </div>
+                            {% endif %}
+                            {% endwith %}
                             <div class="form-group form-button">
                                 <input type="submit" name="signup" id="signup" class="form-submit" value="Registreer" />
                             </div>
