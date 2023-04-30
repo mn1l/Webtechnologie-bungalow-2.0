@@ -37,7 +37,7 @@
 
         <!-- slider Area Start-->
         <div class="slider-area">
-            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="assets/img/hero/roomspage_hero.jpg" >
+            <div class="single-slider hero-overly slider-height2 d-flex align-items-center" data-background="../static/assets/img/hero/aboutpage_hero.jpg" >
                 <div class="container">
                     <div class="row ">
                         <div class="col-md-11 offset-xl-1 offset-lg-1 offset-md-1">
@@ -72,11 +72,11 @@
                     <div class="row no-gutters">
                       <div class="col-md-4">
                         {% if boeking.bungalow.id == 1 %}
-                        <img src="../static/boekingcss/img/background4.jpg" class="float" alt="image4">
+                        <img src="../static/boekingcss/img/boeking4.jpg" class="float" alt="image4" height="300" width="350">
                         {% elif boeking.bungalow.id == 2 %}
-                        <img src="../static/boekingcss/img/background6.jpg" class="float" alt="image4">
+                        <img src="../static/boekingcss/img/boeking6.jpg" class="float" alt="image4" height="300" width="350">
                         {% elif boeking.bungalow.id == 3 %}
-                        <img src="../static/boekingcss/img/background8.jpg" class="float" alt="image4">
+                        <img src="../static/boekingcss/img/boeking8.jpg" class="float" alt="image4" height="300" width="350">
                         {% endif %}
                       </div>
                       <div class="col-md-8">
@@ -102,12 +102,12 @@
                                 <div class="row">
                                     <div class="vr"></div>
                                     <div class="col-4">
-                                        <button type="button" class="submit-btn">Cancel</button>
-
+                                        <div class="header-btn">
+                                            <button type="button" class="btn btn1 btn-warning d-none d-lg-block" >Wijzigen</button>
+                                        </div>
                                     </div>
-                                    <div class="form-btn">
-                                        <button type="button" class="submit-btn">Save changes</button>
-                                    
+                                    <div class="header-btn">
+                                        <button type="button" class="btn btn1 d-none d-lg-block">Annuleren</button>
                                     </div>
                                     <!--<div class="form-btn">
                                         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
