@@ -100,4 +100,18 @@ def boekingen():
     return render_template("mijnboekingen.html", user=current_user, boekingen=results)
 
 
+@auth.route('/delete/<int:id>')
+def delete(id):
+    boeking_delete = db.query.get_or_404(Boekingen, id)
+    results = db.session.execute(db.select(Boekingen, Bungalow)
+                                 .filter(Boekingen.bungalow_id == Bungalow.id)
+                                 .filter(Boekingen.customer_id == current_user.id)).scalars()
 
+    try:
+        db.sessions.delete(boeking_delete)
+        db.session.commit()
+        flash("Boeking geannuleerd.")
+        return render_template("mijnboekingen.html", user=current_user, boekingen=results)
+    except:
+        flash("Er ging iets fout! Probeer het opnieuw.")
+        return render_template("mijnboekingen.html", user=current_user, boekingen=results)
