@@ -104,6 +104,17 @@
 
                                 <div class="row">
                                     <div class="vr"></div>
+                                    <div class="col-4">                                   
+                                        <div class="header-btn">
+                                            {% if boeking.bungalow.id == 1 %}
+                                            <a href="/bungalow/1" class="btn btn1 d-none d-lg-block ">Extra week</a>
+                                            {% elif boeking.bungalow.id == 2 %}
+                                            <a href="/bungalow/2" class="btn btn1 d-none d-lg-block ">Extra week</a>
+                                            {% elif boeking.bungalow.id == 3 %}
+                                            <a href="/bungalow/3" class="btn btn1 d-none d-lg-block ">Extra week</a>
+                                            {% endif %}
+                                        </div>
+                                    </div>
                                     <div class="col-4">
                                         <div class="header-btn">
                                             <a.text-nowrap type="button" class="btn btn1 d-none d-lg-block" >Wijzigen</a>
@@ -111,13 +122,8 @@
                                     </div>
                                     <div class="col-4">                                   
                                         <div class="header-btn">
-                                        <li><a href="{{ url_for('auth.delete_pl', id=boeking.id) }}">Delete</a></li>
-                                    </div>
-                                    <div class="col-4">                                   
-                                        <div class="header-btn">
-                                            <a href="/bungalows" class="btn btn1 d-none d-lg-block ">Extra week</a>
-                                        </div>
-                                    </div>
+                                        <a class="btn btn1 d-none d-lg-block" href="{{ url_for('auth.delete_pl', id=boeking.id) }}">Annuleren</a>
+                                    </div>   
                                 </div>
  
                                     <!--<div class="form-btn">
