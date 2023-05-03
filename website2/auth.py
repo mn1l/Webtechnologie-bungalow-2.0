@@ -107,3 +107,30 @@ def delete_pl(id):
     db.session.commit()
     flash("Boeking geannuleerd.")
     return redirect(url_for("views.home"))
+
+@auth.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit_pl(id):
+    result = db.get_or_404(Boekingen, id)
+
+    if request.method == 'POST':
+        new_week = request.form["week"]
+        if not new_week:
+            flash("Er waren geen wijzigingen")
+        old_boeking = result.boeking
+        result.boeking = new_week
+        flash(f"Updated {old_boeking} to {new_week}.")
+        return ...
+    
+    elif request.method == 'POST':
+        new_bungalow = request.form["bungalow"]
+        if not new_bungalow:
+            flash("Er waren geen wijzigingen")
+        old_bungalow = result_bungalow
+        result_bungalow = new_bungalow
+        flash(f"Updated {old_bungalow} to {new_bungalow}")
+        return ...
+    
+    return ...
+
+        
+    
