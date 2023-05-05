@@ -77,10 +77,10 @@ def bungalow(bungalow_id):
     if request.method == 'POST':
         week = request.form.get('week')
 
-        boeking = Boekingen.query.filter_by(week='week')
+        boeking = Boekingen.query.filter_by(week='week').first()
         if boeking:
             flash('Datum is niet beschikbaar', category='error')
-        else:
+        if not boeking:
             new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
             db.session.add(new_boeking)                   
             db.session.commit()
@@ -119,7 +119,7 @@ def edit_pl(id):
         old_boeking = result.boeking
         result.boeking = new_week
         flash(f"Updated {old_boeking} to {new_week}.")
-        return ...
+        return render_template("edit.html", user=current_user)
     
     elif request.method == 'POST':
         new_bungalow = request.form["bungalow"]
@@ -128,9 +128,9 @@ def edit_pl(id):
         old_bungalow = result_bungalow
         result_bungalow = new_bungalow
         flash(f"Updated {old_bungalow} to {new_bungalow}")
-        return ...
+        return render_template("edit.html", user=current_user)
     
-    return ...
+    return render_template("edit.html", user=current_user)
 
         
     
