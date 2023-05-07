@@ -4,6 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
+from sqlalchemy.exc import IntegrityError
 
 auth = Blueprint('auth', __name__)
 
@@ -77,10 +78,12 @@ def bungalow(bungalow_id):
     if request.method == 'POST':
         week = request.form.get('week')
 
-        boeking = Boekingen.query.filter_by(week='week').first()
+        try:
+            boeking = Boekingen.query.filter_by(week='week').first()
+        except IntegrityError:
+            flash("Bungalow al geboekt!")
+        
         if boeking:
-            flash('Datum is niet beschikbaar', category='error')
-        if not boeking:
             new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
             db.session.add(new_boeking)                   
             db.session.commit()

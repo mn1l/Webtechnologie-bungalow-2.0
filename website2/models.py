@@ -25,6 +25,9 @@ class Bungalow(db.Model):
 
 class Boekingen(db.Model):
     __tablename__ = 'bookings'
+    table_args = (
+        db.UniqueConstraint('bungalow_id', 'week'),
+    )
     id = db.Column(db.Integer, primary_key=True)
     week = db.Column(db.Integer, nullable=False) # Not NULL
     customer_id = db.Column(db.Integer, db.ForeignKey('customer.id')) # Foreign key?
