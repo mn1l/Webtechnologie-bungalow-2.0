@@ -111,8 +111,8 @@ def delete_pl(id):
     flash("Boeking geannuleerd.")
     return redirect(url_for("views.home"))
 
-@auth.route("/edit/<int:id>", methods=["GET", "POST"])
-def edit_pl(id):
+#@auth.route("/edit/<int:id>", methods=["GET", "POST"])
+#def edit_pl(id):
     result = db.get_or_404(Boekingen, id)
 
     if request.method == 'POST':
