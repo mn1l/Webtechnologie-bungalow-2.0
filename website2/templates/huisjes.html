@@ -42,18 +42,6 @@
 </head>
 
 <body>
-    {% with messages = get_flashed_messages() %}
-                            {% if messages %}
-                            <div class="alert alert-danger alert-dismissible fade show" role="alert">
-                            {% for message in messages %}
-                                <li>{{ message }}</li>
-                            {% endfor %}
-                                <button type="button" class="close" data-dismiss="alert" aria-label="Close">
-                                    <span aria-hidden="true">&times;</span>
-                                  </button>
-                                </div>
-                            {% endif %}
-                            {% endwith %}
 
 	<div id="preloader-active">
         <div class="preloader d-flex align-items-center justify-content-center">
@@ -82,6 +70,19 @@
 							<form method="POST">
 								<div class="row">
 									<div class="col-md-6">
+										{% with messages = get_flashed_messages() %}
+										{% if messages %}
+										<div class="alert alert-danger alert-dismissible" role="alert">
+										{% for message in messages %}
+											<li>{{ message }}</li>
+										{% endfor %}
+											<button type="button" class="close" data-dismiss="alert" aria-label="Close">
+												<span aria-hidden="true">&times;</span>
+												</button>
+											</div>
+										{% endif %}
+										{% endwith %}
+
 										<div class="form-group">
 											<span class="form-label">Kies een week</span>
 											<div class="nativeWeekPicker">
@@ -166,6 +167,18 @@
         <script src="../static/assets/js/plugins.js"></script>
         <script src="../static/assets/js/main.js"></script>
         
+
+		<script>
+			const currentBookings = {{ current_bookings | tojson }};
+
+			$("#week").on("change", function() { 
+				if (currentBookings.includes($(this).val())) {
+					$(this).addClass("is-invalid");
+				} else {
+					$(this).removeClass("is-invalid");
+				}
+			}) ;
+		</script>
 </body><!-- This templates was made by Colorlib (https://colorlib.com) -->
 {% endblock %}
 </html>

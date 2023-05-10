@@ -4,7 +4,7 @@ from werkzeug.security import generate_password_hash, check_password_hash
 from . import db
 from flask_login import login_user, login_required, logout_user, current_user
 from sqlalchemy.orm.exc import NoResultFound
-from sqlalchemy.exc import IntegrityError
+
 
 auth = Blueprint('auth', __name__)
 
@@ -55,7 +55,7 @@ def register():
             flash('Email is al in gebruik.', category='error')
         elif pw1 != pw2:
             flash('Wachtwoorden komen niet overeen.', category='error')
-        elif len(pw1) < 8:
+        elif len(pw1) < 6:
             flash('Wachtwoord is te kort.', category='error')
         else:
             new_klant = Klant(email=email, name=name, pw=generate_password_hash(pw1, method='sha256'))
@@ -75,15 +75,20 @@ def bungalows():
 def bungalow(bungalow_id):
     bungalow = db.get_or_404(Bungalow, bungalow_id)
 
+    boekingen = [
+        b.week
+        for b in db.session.execute(db.select(Boekingen).where(Boekingen.bungalow_id == bungalow.id)).scalars()
+    ]
+
     if request.method == 'POST':
         week = request.form.get('week')
 
-        try:
-            boeking = Boekingen.query.filter_by(week='week').first()
-        except IntegrityError:
-            flash("Bungalow al geboekt!")
+        boeking = Boekingen.query.filter_by(week=week, bungalow_id=bungalow.id).first()
+        print("DEBUG", boeking)
         
         if boeking:
+            flash('Datum is niet beschikbaar', category='error')
+        if not boeking:
             new_boeking = Boekingen(week=week, customer_id = current_user.id, bungalow_id = bungalow.id)
             db.session.add(new_boeking)                   
             db.session.commit()
@@ -91,7 +96,7 @@ def bungalow(bungalow_id):
             return redirect(url_for('views.home'))
 
     #print(list(db.session.execute(db.select(Bungalow)).scalars()))
-    return render_template('huisjes.html', bungalow = bungalow)
+    return render_template('huisjes.html', bungalow = bungalow, current_bookings=boekingen)
 
 @auth.route('/boekingen')
 @login_required
@@ -111,8 +116,8 @@ def delete_pl(id):
     flash("Boeking geannuleerd.")
     return redirect(url_for("views.home"))
 
-#@auth.route("/edit/<int:id>", methods=["GET", "POST"])
-#def edit_pl(id):
+@auth.route("/edit/<int:id>", methods=["GET", "POST"])
+def edit_pl(id):
     result = db.get_or_404(Boekingen, id)
 
     if request.method == 'POST':
